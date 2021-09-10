@@ -5,7 +5,7 @@
               <span>BOOLFLIX</span>
           </div>
           <div class="col-3">
-              <Search/>
+              <Search @doSearch="search"/>
 
           </div>
       </div>
@@ -17,8 +17,18 @@
 import Search from "../components/Search.vue"
 export default {
     name:"Header",
+    data(){
+        return{
+            searchTerm: "",
+        }
+    },
     components: {
         Search,
+    },
+    methods: {
+        search(text){
+            this.searchTerm = text;
+        }
     }
 
 }
