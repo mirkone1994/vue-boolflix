@@ -36,7 +36,7 @@ export default {
             console.log(err);
         });
 
-        axios.get(`${this.baseUri}/search/tv?api_key=${this.apiKey}&query=${this.searchQuery}`).then((res)=>
+      axios.get(`${this.baseUri}/search/tv?api_key=${this.apiKey}&query=${this.searchQuery}`).then((res)=>
         {
             this.series=res.data.results;
         }).catch((err)=>{
