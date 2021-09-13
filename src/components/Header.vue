@@ -5,8 +5,8 @@
               <span>BOOLFLIX</span>
           </div>
           <div class="col-3">
-              <Search @doSearch="search"/>
-
+              <input v-model="searchTerm" type="text" placeholder="Cerca il film...">
+              <button type="button" @click="$emit('doSearch', searchTerm)">Cerca</button>
           </div>
       </div>
 
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import Search from "../components/Search.vue"
 export default {
     name:"Header",
     data(){
@@ -22,15 +21,6 @@ export default {
             searchTerm: "",
         }
     },
-    components: {
-        Search,
-    },
-    methods: {
-        search(text){
-            this.searchTerm = text;
-        }
-    }
-
 }
 </script>
 

@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <Header/>
-    <Films/>
+    <Header @doSearch="getSearchPadre"/>
+    <Films :searchQuery="searchQuery" :films="films"/>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Header from "./components/Header.vue"
 import Films from "./components/Films.vue"
 export default {
@@ -13,8 +14,28 @@ export default {
   components: {
     Header,
     Films,
-    
-  }
+  },
+  data(){
+    return {
+      baseUri : "https://api.themoviedb.org/3",
+      apiKey : "a21c1888019d78a2591d2a3dc243bfe1",
+      films : [],
+      searchQuery: "",
+    }
+  },
+  
+  methods:{
+    getSearchPadre(search){
+      this.searchQuery = search
+
+      axios.get(`${this.baseUri}/search/movie?api_key=${this.apiKey}&query=${this.searchQuery}`).then((res)=>
+        {
+            this.films=res.data.results;
+        }).catch((err)=>{
+            console.log(err);
+        });
+    },
+  },
 }
 </script>
 
