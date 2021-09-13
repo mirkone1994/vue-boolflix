@@ -6,6 +6,11 @@
       <img v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
       <span v-else>{{film.original_language}}</span>
       <span>{{isWhole(film.vote_average)}}</span>
+      <span v-for="star in 5" :key="star">
+        <i v-if="star<=isWhole(film.vote_average)" class="fas fa-star"></i>
+        <i v-else class="far fa-star"></i>
+
+        </span>
   </section>
 </template>
 

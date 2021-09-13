@@ -5,7 +5,8 @@ vue<template>
       <span>{{serie.original_name}}</span>
       <img v-if="flags.includes(serie.original_language)" :src="flag(serie.original_language)" :alt="serie.title">
       <span v-else>{{serie.original_language}}</span>
-      <span>{{isWhole(series.vote_average)}}</span>
+      <span>{{isWhole(serie.vote_average)}}</span>
+      <span v-for="star in 5" :key="star"><i class="fas fa-star"></i></span>
   </section>
 </template>
 
@@ -29,9 +30,7 @@ methods: {
   isWhole(number){
     return Math.ceil(number/2);
   },
-  nStar(){
-    this.star.length = this.isWhole(this.series.vote_average)
-  }
+
 },
 }
 </script>
