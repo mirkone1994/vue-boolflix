@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @doSearch="getSearchPadre"/>
-    <Films :searchQuery="searchQuery" :films="films"/>
+    <Films :searchQuery="searchQuery" :films="films" :series="series"/>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
       baseUri : "https://api.themoviedb.org/3",
       apiKey : "a21c1888019d78a2591d2a3dc243bfe1",
       films : [],
+      series: [],
       searchQuery: "",
     }
   },
@@ -31,6 +32,13 @@ export default {
       axios.get(`${this.baseUri}/search/movie?api_key=${this.apiKey}&query=${this.searchQuery}`).then((res)=>
         {
             this.films=res.data.results;
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        axios.get(`${this.baseUri}/search/tv?api_key=${this.apiKey}&query=${this.searchQuery}`).then((res)=>
+        {
+            this.series=res.data.results;
         }).catch((err)=>{
             console.log(err);
         });
