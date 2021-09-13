@@ -1,5 +1,6 @@
 vue<template>
   <section class="series-card">
+      <img :src="poster(serie.poster_path)" alt="">
       <span>{{serie.name}}</span>
       <span>{{serie.original_name}}</span>
       <img v-if="flags.includes(serie.original_language)" :src="flag(serie.original_language)" :alt="serie.title">
@@ -21,6 +22,9 @@ data(){
 methods: {
   flag(lang){
     return require(`@/images/${lang}.png`)
+  },
+  poster(image){
+    return (`https://image.tmdb.org/t/p/w342${image}`)
   }
  
 }
