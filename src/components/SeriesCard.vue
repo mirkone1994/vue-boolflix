@@ -15,8 +15,8 @@ name: "SeriesCard",
 props: ["serie"],
 data(){
   return {
-    flags: ["en", "it"]
-
+    flags: ["en", "it"],
+    star: [],
   }
 },
 methods: {
@@ -27,10 +27,12 @@ methods: {
     return (`https://image.tmdb.org/t/p/w342${image}`)
   },
   isWhole(number){
-    return Math.ceil(number/2)
+    return Math.ceil(number/2);
+  },
+  nStar(){
+    this.star.length = this.isWhole(this.series.vote_average)
   }
- 
-}
+},
 }
 </script>
 
