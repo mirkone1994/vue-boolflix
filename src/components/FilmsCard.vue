@@ -2,7 +2,8 @@
   <section class="films-card">
       <span>{{film.title}}</span>
       <span>{{film.original_title}}</span>
-      <span>{{film.original_language}}</span>
+      <img v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
+      <span v-else>{{film.original_language}}</span>
       <span>{{film.vote_average}}</span>
   </section>
 </template>
@@ -13,10 +14,14 @@ name: "FilmsCard",
 props: ["film"],
 data(){
   return {
+    flags: ["en", "it"]
 
   }
 },
-method: {
+methods: {
+  flag(lang){
+    return require(`@/images/${lang}.png`)
+  }
  
 }
 }
