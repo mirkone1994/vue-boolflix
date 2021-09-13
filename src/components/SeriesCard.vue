@@ -5,7 +5,7 @@ vue<template>
       <span>{{serie.original_name}}</span>
       <img v-if="flags.includes(serie.original_language)" :src="flag(serie.original_language)" :alt="serie.title">
       <span v-else>{{serie.original_language}}</span>
-      <span>{{serie.vote_average}}</span>
+      <span>{{isWhole(series.vote_average)}}</span>
   </section>
 </template>
 
@@ -25,6 +25,9 @@ methods: {
   },
   poster(image){
     return (`https://image.tmdb.org/t/p/w342${image}`)
+  },
+  isWhole(number){
+    return Math.ceil(number/2)
   }
  
 }

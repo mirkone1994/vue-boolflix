@@ -5,7 +5,7 @@
       <span>{{film.original_title}}</span>
       <img v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
       <span v-else>{{film.original_language}}</span>
-      <span>{{film.vote_average}}</span>
+      <span>{{isWhole(film.vote_average)}}</span>
   </section>
 </template>
 
@@ -15,7 +15,7 @@ name: "FilmsCard",
 props: ["film"],
 data(){
   return {
-    flags: ["en", "it"]
+    flags: ["en", "it"],
 
   }
 },
@@ -25,6 +25,9 @@ methods: {
   },
   poster(image){
     return (`https://image.tmdb.org/t/p/w342${image}`)
+  },
+  isWhole(number){
+    return Math.ceil(number/2)
   }
  
 }
