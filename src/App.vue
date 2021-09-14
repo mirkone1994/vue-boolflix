@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header @doSearch="getSearchPadre"/>
-    <Films :searchQuery="searchQuery" :films="films" :series="series"/>
+    <div class="container-fluid bg-grey">
+      <Films :searchQuery="searchQuery" :films="films" :series="series"/>
+    </div>
+    
   </div>
 </template>
 
@@ -51,9 +54,7 @@ export default {
 @import "scss/style.scss";
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.bg-grey {
+  background-color: grey;
 }
 </style>
