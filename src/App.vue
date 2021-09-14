@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "scss/style.scss";
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 *{

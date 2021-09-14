@@ -3,14 +3,12 @@
       <img :src="poster(film.poster_path)" alt="">
       <span>{{film.title}}</span>
       <span>{{film.original_title}}</span>
-      <img v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
+      <img class="flag" v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
       <span v-else>{{film.original_language}}</span>
-      <span>{{isWhole(film.vote_average)}}</span>
-      <span v-for="star in 5" :key="star">
+      <span class="star" v-for="star in 5" :key="star">
         <i v-if="star<=isWhole(film.vote_average)" class="fas fa-star"></i>
         <i v-else class="far fa-star"></i>
-
-        </span>
+      </span>
   </section>
 </template>
 
@@ -29,7 +27,8 @@ methods: {
     return require(`@/images/${lang}.png`)
   },
   poster(image){
-    return (`https://image.tmdb.org/t/p/w342${image}`)
+    if (this.film.poster_path) return (`https://image.tmdb.org/t/p/w342${image}`);
+    return "https://www.altavod.com/assets/images/poster-placeholder.png"
   },
   isWhole(number){
     return Math.ceil(number/2)
@@ -40,7 +39,13 @@ methods: {
 </script>
 
 <style scoped lang="scss">
+.flag {
+  height: 20px;
+}
 span {
-    padding-right: 10px;
+  display: block;
+}
+.star {
+  display: inline-block;
 }
 </style>

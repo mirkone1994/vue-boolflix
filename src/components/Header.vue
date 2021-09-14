@@ -1,6 +1,6 @@
 <template>
-  <section class="container">
-      <div class="row">
+  <section class="container-fluid">
+      <div class="row justify-content-around">
           <div class="col-3">
               <span>BOOLFLIX</span>
           </div>
@@ -25,14 +25,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container {
-    max-width: 1400px;
-    margin: auto;
+.container-fluid {
     background-color: #000;
 }
 .row {
-    display: flex;
-    justify-content: space-around;
 }
 span {
     color: red;

@@ -1,9 +1,9 @@
 <template>
   <section id="films" class="container">
-      <div class="row">
-          <div class="col" v-for="film in films" :key="film.id"><FilmsCard :film="film"/></div>
+      <div class="row justify-content-around">
+          <div class="col-6" v-for="film in films" :key="film.id"><FilmsCard :film="film"/></div>
           <hr>
-          <div class="col" v-for="serie in series" :key="serie.id"><SeriesCard :serie="serie"/></div>
+          <div class="col-6" v-for="serie in series" :key="serie.id"><SeriesCard :serie="serie"/></div>
       </div>
   </section>
 </template>
