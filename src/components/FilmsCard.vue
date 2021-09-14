@@ -4,17 +4,18 @@
       <div class="deck">
         <div class="card hovercard">
           <div class="front face">
-            <img :src="poster(film.poster_path)" alt="">
+            <img class="poster" :src="poster(film.poster_path)" alt="">
           </div>
           <div class="back face">
-            <span>{{film.title}}</span>
-            <span>{{film.original_title}}</span>
+            <p><span class="fw-bold">TITLE: </span>{{film.title}}</p>
+            <p><span class="fw-bold">ORIGINAL TITLE: </span>{{film.original_title}}</p>
+            <p><span class="fw-bold">OVERVIEW: </span>{{film.overview}}</p>
             <img class="flag" v-if="flags.includes(film.original_language)" :src="flag(film.original_language)" :alt="film.title">
-            <span v-else>{{film.original_language}}</span>
-            <span class="star" v-for="star in 5" :key="star">
+            <p v-else>{{film.original_language}}</p>
+            <p class="star" v-for="star in 5" :key="star">
               <i v-if="star<=isWhole(film.vote_average)" class="fas fa-star"></i>
               <i v-else class="far fa-star"></i>
-            </span>
+            </p>
           </div>
         </div>
       </div>
@@ -51,16 +52,18 @@ methods: {
 <style scoped lang="scss">
 .flag {
   height: 20px;
-}
-span {
   display: block;
+}
+.poster{
+  width: 342px;
+  height: 515px;
 }
 .star {
   display: inline-block;
 }
 .deck{
   margin:15px;
-  width:341px;
+  width:342px;
   height:515px;
   position:relative;
   border-radius:10px;
@@ -68,16 +71,13 @@ span {
 .card{
   width:100%;
   height:100%;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transition: all .5s linear;
   transition: all .5s linear;
 }
 .face {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color:#fff;  
 }
@@ -85,7 +85,6 @@ span {
   overflow:hidden;
   z-index:-1;
   display: block;
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 .front, .back{
@@ -95,7 +94,6 @@ span {
   z-index:1;
 }
 .hovercard:hover{
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
   <section id="films" class="container">
-      <div class="row justify-content-around">
-          <div class="col-6 col-xl-4 my-5" v-for="film in films" :key="film.id"><FilmsCard :film="film"/></div>
-          <div class="col-6 col-xl-4 my-5" v-for="serie in series" :key="serie.id"><SeriesCard :serie="serie"/></div>
+      <div class="row justify-content-between">
+          <h2>Film</h2>
+          <div class="col-12 col-md-6 col-lg-5 col-xl-4 my-5" v-for="film in films" :key="film.id"><FilmsCard :film="film"/></div>
+          <h2>TV-Shows</h2>
+          <div class="col-12 col-md-6 col-lg-5 col-xl-4 my-5" v-for="serie in series" :key="serie.id"><SeriesCard :serie="serie"/></div>
       </div>
   </section>
 </template>
@@ -22,5 +24,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h2{
+    color: #fff;
+}
 
 </style>

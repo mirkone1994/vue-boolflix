@@ -55,6 +55,6 @@ export default {
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 .bg-grey {
-  background-color: grey;
+  background-color: rgba(20,20,22,1)
 }
 </style>
